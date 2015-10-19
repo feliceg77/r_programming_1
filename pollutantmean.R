@@ -13,22 +13,29 @@ pollutantmean <- function(directory, pollutant, id = 1:332) {
         ## in the 'id' vector (ignoring NA values)
         ## NOTE: Do not round the result!
 	
+	data_sulfate <- c()
+	data_nitrate <- c()
 
 	for(i in id) { 
 	
 		pad_id <- str_pad(i, 3, pad = "0")
+		
 		my_file <- paste0(directory,"/",pad_id,".csv")
+
 		x <- read.csv(my_file)
-		data <- c(data, x)
+
+		data_sulfate <- append(data_sulfate , x$sulfate)
+		data_nitrate <- append(data_nitrate, x$nitrate)
+
 	}
 	##	print (data)
 
 	if ( pollutant == "sulfate"){
 		## Media nel caso di sulfate
-		mean(data$sulfate,na.rm=TRUE)
+		mean(data_sulfate,na.rm=TRUE)
 	} else {
 		## Media nel caso di nitrate
-		mean(data$nitrate,na.rm=TRUE)
+		mean(data_nitrate,na.rm=TRUE)
 	}
 	
 }
