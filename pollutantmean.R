@@ -28,8 +28,7 @@ pollutantmean <- function(directory, pollutant, id = 1:332) {
 		data_nitrate <- append(data_nitrate, x$nitrate)
 
 	}
-	##	print (data)
-
+	
 	if ( pollutant == "sulfate"){
 		## Media nel caso di sulfate
 		mean(data_sulfate,na.rm=TRUE)
