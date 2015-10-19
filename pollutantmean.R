@@ -15,19 +15,19 @@ pollutantmean <- function(directory, pollutant, id = 1:332) {
 	
 
 	for(i in id) { 
-		 
+	
 		pad_id <- str_pad(i, 3, pad = "0")
 		my_file <- paste0(directory,"/",pad_id,".csv")
 		x <- read.csv(my_file)
 		data <- c(data, x)
-		##print(my_file)
 	}
-##	print (data)
+	##	print (data)
+
 	if ( pollutant == "sulfate"){
-		##print("OK - sulfate")
+		## Media nel caso di sulfate
 		mean(data$sulfate,na.rm=TRUE)
 	} else {
-		##print("OK - nitrate")
+		## Media nel caso di nitrate
 		mean(data$nitrate,na.rm=TRUE)
 	}
 	
